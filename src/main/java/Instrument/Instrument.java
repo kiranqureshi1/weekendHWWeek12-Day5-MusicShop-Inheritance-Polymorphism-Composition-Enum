@@ -31,6 +31,10 @@ public abstract class Instrument implements IPlay, ISell {
         return this.material;
     }
 
+    public double sell(){
+        return this.price();
+    }
+
     public double getAmountOfWorkPutInto(){
         return this.amountOfWorkPutIntoInScore3;
     }
@@ -51,9 +55,6 @@ public abstract class Instrument implements IPlay, ISell {
         return this.amountOfWorkPutIntoInScore3 * materialPrice;
     }
 
-    public double sell(){
-        return this.price();
-    }
 
     public double bought(){
         return materialPrice;

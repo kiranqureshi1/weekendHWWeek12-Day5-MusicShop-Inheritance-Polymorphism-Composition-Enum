@@ -1,6 +1,7 @@
 package Core;
 
 import Core.ISell;
+import Instrument.Item;
 
 import java.util.ArrayList;
 
@@ -52,16 +53,23 @@ public class Shop{
         return guitarString.bought();
     }
 
+    public boolean itemSellableOrBuyable(ISell item){
+            if(item.itemSellableOrBuyable() == true){
+                return true;
+            }return false;
+    }
 
-    public boolean itemSellableOrBuyable(){
+
+    public int itemSellableOrBuyableSize(){
         ArrayList<ISell> goodConditionItems = new ArrayList<>();
         for (ISell item : items){
             if(item.itemSellableOrBuyable() == true){
                 goodConditionItems.add(item);
-                return true;
             }
-        }goodConditionItems.size();
-        return false;
+        } return goodConditionItems.size();
+
     }
+
+
 
 }

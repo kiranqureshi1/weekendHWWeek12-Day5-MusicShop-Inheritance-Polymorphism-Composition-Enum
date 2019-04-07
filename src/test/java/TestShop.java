@@ -27,14 +27,14 @@ public class TestShop {
 
     @Before
     public void before(){
-        guitar1 = new Guitar("Golden", Item.Guitar, "brass", 30, 1.3, true, 2, 2, 5);
+        guitar1 = new Guitar("Golden", Item.Guitar, "brass", 30, 1.3, false, 2, 2, 5);
         guitar2 = new Guitar("Grey", Item.Guitar, "brass", 30, 1.3, true, 2, 2, 5);
         guitar3 = new Guitar("Purple", Item.Guitar, "brass", 30, 1.3, true, 2, 2, 5);
         piano1 = new Piano("Black", Item.Piano, "brass", 30, 1.3, true, 2, 5);
         piano2 = new Piano("White", Item.Piano, "brass", 30, 1.3, true, 2, 5);
         drumStick = new DrumStick(30.0, 1.3, true, 10);
         guitarString1 = new GuitarString(30, 1.3,true,10);
-        guitarString1 = new GuitarString(40, 1.3,true,10);
+        guitarString2 = new GuitarString(40, 1.3,true,10);
         ArrayList<ISell> items = new ArrayList<>();
         items.add(guitar1);
         items.add(guitar2);
@@ -64,7 +64,7 @@ public class TestShop {
     @Test
     public void canGetDecreasedBudget(){
         shop.getDecreasedBudget(10.0);
-        assertEquals(90.0, shop.getBudget());
+        assertEquals(990.0, shop.getBudget());
     }
 
     @Test
@@ -79,5 +79,15 @@ public class TestShop {
         shop.bought(guitarString2);
         assertEquals(960.0, shop.getBudget());
         assertEquals(6, shop.getItemsCount());
+    }
+
+    @Test
+    public void canCheckItemisSellableOrBuyableSize(){
+        assertEquals(4, shop.itemSellableOrBuyableSize());
+    }
+
+    @Test
+    public void canCheckItemisSellableOrBuyable(){
+        assertEquals(true, shop.itemSellableOrBuyable(guitar2));
     }
 }
